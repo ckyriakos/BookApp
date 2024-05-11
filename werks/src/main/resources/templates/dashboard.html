@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    
+    <h2> User Home Page! </h2>
+    
+    <form th:action="@{/user/dashboard}" method="post">
+        
+        <h1> Welcome User</h1>
+        
+        <h4>Logged as: <span sec:authentication="name"></span></h4>
+        
+        <a th:href="@{/logout}">Logout</a>
+        
+    </form>
+
+
+
+<tbody>                                                                                                                                                         
+<tr>                                                                                                                                        
+    <td style="color:green;">Last Name: </td> <td><c:out value="${userProfile.fullName}"></c:out> </td>                                       
+</tr>                                                                                                                                       
+<tr>                                                                                                                                        
+    <td style="color:green;">Username: </td> <td><c:out value="${userProfile.username}"></c:out> </td>                                        
+</tr>                                                                                                                                       
+                    <tr>                                                                                                                                        
+                      <td style="color:green;">Email Id: </td> <td><c:out value="${userProfile.age}"></c:out> </td>                                             
+                    </tr>                                                                                                                                       
+                    <tr>                                                                                                                                        
+                      <td style="color:green;">Address: </td> <td><c:out value="${book.title}"></c:out> </td>                                                   
+                    </tr>                                                                                                                                       
+                    <tr>                                                                                                                                        
+                      <td style="color:green;">Password: </td> <td><c:out value="***************************************************************"></c:out> </td>
+                    </tr>                                                                                                                                       
+</tbody>                                                                                                                                                        
+
+
+
+
+
+
+</body>
+</html>
