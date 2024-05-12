@@ -14,7 +14,7 @@ public class UserProfile {
 	@Column(name="id")
 	private  int id;
 	
-	//mallon pernei apo user file
+	//mallon pαιrnei apo user file
 	@Column(name="username")
 	private String username;
 	
