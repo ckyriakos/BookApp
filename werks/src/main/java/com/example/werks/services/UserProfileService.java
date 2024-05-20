@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.werks.model.User;
+import com.example.werks.formsdata.BookFormData;
+import com.example.werks.formsdata.UserProfileFormData;
 
 @Service
 public interface UserProfileService {
@@ -17,10 +18,10 @@ public interface UserProfileService {
 		public List<BookFormData> retrieveBookOffers(String username);
 		
 		public void addBookOffer(String username, BookFormData bookFormData);
-		
-		public List<BookFormData> searchBooks(SearchFormData searchFormData);
-		
-		public List<BookFormData> recommendedBooks(String username, RecommendationsFormData recommendationFormData);
+//		
+//		public List<BookFormData> searchBooks(SearchFormData searchFormData);
+//		
+//		public List<BookFormData> recommendedBooks(String username, RecommendationsFormData recommendationFormData);
 		
 		public void requestBook(int bookId, String username);
 		

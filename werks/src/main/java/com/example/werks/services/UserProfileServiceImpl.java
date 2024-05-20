@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.werks.dao.*;
-
+import com.example.werks.formsdata.*;
 import com.example.werks.model.*;
 
 @Service
@@ -41,7 +41,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 	// functions
 	@Override
 	public UserProfileFormData retrieveProfile(String username) {
-		userProfileMapper.findByUsername(username);
+		Optional<UserProfile> userProfile = userProfileMapper.findByUsername(username);
+		return userProfile.get();
 	}
 
 	@Override
@@ -49,7 +50,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 		userProfileMapper.save(userProfileFormData);
 	}
 	
-	// na kanw class katw apo to forms/entity
 	public List<BookFormData> retrieveBookOffers(String username){
 		
 		UserProfile userProfile = userProfileMapper.findByUsername(username).orElseThrow(
@@ -67,7 +67,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 		
 	}
 	
-	// h searchformdata logika tha kanei extend thn httpservlet class opws kai oi alloes formdata
 	public List<BookFormData> searchBooks(SearchFormData searchFormData);
 	
 	public List<BookFormData> recommendedBooks(String username, RecommendationsFormData recommendationFormData);
@@ -79,17 +78,26 @@ public class UserProfileServiceImpl implements UserProfileService {
                 ()-> new UsernameNotFoundException(
                         String.format("USER_NOT_FOUND %s", username)
                 ));
-		userProfile.getRequestedBooks();
-		//logika thelei ki alla
+		List<Book> requestedBooks = userProfile.getRequestedBooks();
+		requestedBooks.add(bookId);
+		
 	}
 	
-	public List<BookFormData> retrieveBookRequests(String username);
+	public List<BookFormData> retrieveBookRequests(String username) {
+		public void requestBook(int bookId, String username) {
+			UserProfile userProfile = userProfileMapper.findByUsername(username).orElseThrow(
+	                ()-> new UsernameNotFoundException(
+	                        String.format("USER_NOT_FOUND %s", username)
+	                ));
+			userProfile.getRequestedBooks();
+		}
+	}
 	
-	public List<UserProfileFormData> retrieveRequestingUsers(int bookId);
+//	public List<UserProfileFormData> retrieveRequestingUsers(int bookId){}
 	
 	@Override
 	public void deleteBookOffer(String username, int bookId) {
-		UserProfile userProfile = userProfileMapper.findByUsername(username).orElseThrow(
+			userProfileMapper.findByUsername(username).orElseThrow(
                 ()-> new UsernameNotFoundException(
                         String.format("USER_NOT_FOUND %s", username)
                 ));

@@ -14,7 +14,6 @@ public class UserProfile {
 	@Column(name="id")
 	private  int id;
 	
-	//mallon pαιrnei apo user file
 	@Column(name="username")
 	private String username;
 	

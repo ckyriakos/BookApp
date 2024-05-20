@@ -60,8 +60,7 @@ public class WebSecurityConf {
                     .successHandler(customSecurityHandler)
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    //.defaultSuccessUrl("/kristari", true)  // Redirect to home after login
-                    //.permitAll()  // Allow access to login page without authentication
+                    
                 )
             .logout(logout -> logout
             		.logoutUrl("/logout")
